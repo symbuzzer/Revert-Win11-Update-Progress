@@ -2,7 +2,7 @@
 setlocal EnableDelayedExpansion
 mode con:cols=70 lines=6
 cls
-set ver=1.0.1
+set ver=1.0.2
 set name=Revert Win11 Update Progress
 set title=%name% v%ver%
 title %title%
@@ -32,6 +32,7 @@ goto stopservice
 
 :stopservice
 echo.-Stoping update services
+goto checkservice
 
 :checkservice
 sc query wuauserv | find "STOPPED" >nul 2>&1
