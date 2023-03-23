@@ -1,3 +1,6 @@
+v1.0.2  
+- Fixed non-critical bug    
+  
 v1.0.1  
 - Cleanup code  
   
