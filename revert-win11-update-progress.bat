@@ -2,7 +2,7 @@
 setlocal EnableDelayedExpansion
 mode con:cols=70 lines=6
 cls
-set ver=1.0.2
+set ver=1.0.3
 set name=Revert Win11 Update Progress
 set title=%name% v%ver%
 title %title%
@@ -14,17 +14,13 @@ goto checkPrivileges
 
 :checkPrivileges
 NET FILE 1>NUL 2>NUL
-if '%errorlevel%' == '0' ( goto gotPrivileges ) else ( goto getPrivileges )
+if '%errorlevel%' == '0' ( goto gotPrivileges ) else ( goto errorPrivileges )
 
-:getPrivileges
-if '%1'=='ELEV' (shift & goto gotPrivileges)
-setlocal DisableDelayedExpansion
-set "batchPath=%~0"
-setlocal EnableDelayedExpansion
-ECHO Set UAC = CreateObject^("Shell.Application"^) > "%temp%\OEgetPrivileges.vbs"
-ECHO UAC.ShellExecute "!batchPath!", "ELEV", "", "runas", 1 >> "%temp%\OEgetPrivileges.vbs"
-"%temp%\OEgetPrivileges.vbs"
-exit /B
+:errorPrivileges
+echo.Please run as adminstrator and try again
+echo.Will exit in 5 seconds...
+timeout /t 5 /nobreak >nul
+exit
 
 :gotPrivileges
 setlocal & pushd .
