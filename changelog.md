@@ -1,3 +1,6 @@
+v1.0.3  
+- Fixed problem when getting UAC priviliges  
+  
 v1.0.2  
 - Fixed non-critical bug    
   
