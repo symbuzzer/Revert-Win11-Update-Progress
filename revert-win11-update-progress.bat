@@ -1,29 +1,21 @@
 @echo off
 setlocal EnableDelayedExpansion
-mode con:cols=70 lines=6
+mode con:cols=70 lines=8
 cls
-set ver=1.0.3
+set ver=1.0.4
 set name=Revert Win11 Update Progress
-set title=%name% v%ver%
+set author=Ali BEYAZ
+set title=%name% v%ver% by %author%
 title %title%
 color 0a
 set updatefolder="%SYSTEMDRIVE%\Windows\SoftwareDistribution\Download"
-set filename=%RANDOM%
-echo.Welcome to %name% v%ver%
-goto checkPrivileges
+echo.Welcome to %title%
+goto privileges
 
-:checkPrivileges
-NET FILE 1>NUL 2>NUL
-if '%errorlevel%' == '0' ( goto gotPrivileges ) else ( goto errorPrivileges )
-
-:errorPrivileges
-echo.Please run as adminstrator and try again
-echo.Will exit in 5 seconds...
-timeout /t 5 /nobreak >nul
-exit
-
-:gotPrivileges
-setlocal & pushd .
+:privileges
+echo. 
+echo.It needs to work with admin rights
+pause
 goto stopservice
 
 :stopservice
