@@ -1,5 +1,5 @@
 ## v1.0.4
-- Removed getting UAC priviliges mechanism (Thanks for Elanur for her feedback)
+- Removed getting UAC priviliges mechanism (Thanks to Elanur for her feedback)
   
 ## v1.0.3  
 - Fixed problem when getting UAC priviliges  
